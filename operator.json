@@ -1,11 +1,11 @@
 {
-  "name": "OPERATOR NAME",
-  "description": "DESCRIPTION",
-  "tags": ["template"],
+  "name": "tracer",
+  "description": "Quantify TCR reads with TraCeR",
+  "tags": ["genomics", "transcriptomics", "rna-seq", "fastq", "t-cell receptor"],
   "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/OPERATOR_NAME"],
-  "container": "tercen/CONTAINER_NAME:TAG",
-  "isWebApp": false
+  "urls": ["https://github.com/tercen/tracer_docker_operator"],
+  "container": "fcadete/tracer_docker_operator:0.0.1",
+  "properties": [
+
+  ]
 }
-
-
