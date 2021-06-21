@@ -31,6 +31,9 @@ RUN tar xzvf ncbi-igblast-1.17.1-x64-linux.tar.gz
 ENV PATH="/ncbi-igblast-1.17.1/bin:${PATH}"
 WORKDIR /ncbi-igblast-1.17.1/bin
 ENV IGDATA=/ncbi-igblast-1.17.1/bin
+RUN cp -r /ncbi-igblast-1.17.1/internal_data /ncbi-igblast-1.17.1/bin/
+RUN cp -r /ncbi-igblast-1.17.1/optional_file /ncbi-igblast-1.17.1/bin/
+WORKDIR /
 
 # Get Salmon binaries and add them to the PATH
 RUN wget https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmon-1.4.0_linux_x86_64.tar.gz
@@ -38,6 +41,7 @@ RUN tar xzvf salmon-1.4.0_linux_x86_64.tar.gz
 ENV PATH="/salmon-latest_linux_x86_64/bin:${PATH}"
 
 # install python and required packages
+RUN apt-get update
 RUN apt install -y python3-pip
 RUN pip3 install numpy
 RUN pip3 install biopython
@@ -80,19 +84,21 @@ WORKDIR /tracer
 RUN pip3 install -r requirements.txt
 WORKDIR /
 
+# copy our configuration file into the image
+COPY tercen_tracer.conf /
 
 USER root
 WORKDIR /operator
 
-RUN git clone https://github.com/tercen/TraCeR_operator.git
+RUN git clone https://github.com/tercen/TraCeR_operator
 
 WORKDIR /operator/TraCeR_operator
 
-RUN echo 0.0.1 && git pull
-RUN echo 0.0.1 && git checkout
+RUN echo 0.0.2 && git pull
+RUN echo 0.0.2 && git checkout
 
 RUN R -e "install.packages('renv')"
-RUN R -e "renv::restore(confirm=FALSE)"
+RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
 
 ENTRYPOINT [ "R","--no-save","--no-restore","--no-environ","--slave","-f","main.R", "--args"]
 CMD [ "--taskId", "someid", "--serviceUri", "https://tercen.com", "--token", "sometoken"]
