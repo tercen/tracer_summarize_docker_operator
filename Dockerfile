@@ -87,6 +87,8 @@ WORKDIR /
 # copy our configuration file into the image
 COPY tercen_tracer.conf /
 
+COPY collect_TRA_TRB_in_fasta.py /
+
 USER root
 WORKDIR /operator
 
@@ -94,8 +96,8 @@ RUN git clone https://github.com/tercen/TraCeR_operator
 
 WORKDIR /operator/TraCeR_operator
 
-RUN echo 0.0.2 && git pull
-RUN echo 0.0.2 && git checkout
+RUN echo 0.0.3 && git pull
+RUN echo 0.0.3 && git checkout
 
 RUN R -e "install.packages('renv')"
 RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
