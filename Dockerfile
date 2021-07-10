@@ -96,8 +96,8 @@ RUN git clone https://github.com/tercen/TraCeR_operator
 
 WORKDIR /operator/TraCeR_operator
 
-RUN echo 0.0.5 && git pull
-RUN echo 0.0.5 && git checkout
+RUN echo 0.0.1.3 && git pull
+RUN echo 0.0.1.3 && git checkout
 
 RUN R -e "install.packages('renv')"
 RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
