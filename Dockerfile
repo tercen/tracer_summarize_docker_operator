@@ -96,6 +96,8 @@ RUN git clone https://github.com/tercen/TraCeR_operator
 
 WORKDIR /operator/TraCeR_operator
 
+RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
+
 RUN echo 0.0.1.3 && git pull
 RUN echo 0.0.1.3 && git checkout
 
