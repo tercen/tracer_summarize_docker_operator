@@ -12,9 +12,5 @@ More information on TraCeR can be found in the [paper describing it](http://dx.d
 
 Input projection|.
 ---|---
-`x-axis`        | type, description
-`y-axis`        | type, description
-`row`           | type, description
-`column`        | type, description
-`colors`        | type, description
-`labels`        | type, description
+`column`        | documentId, the fastq files (gzipped or not) to be processed.
+
