@@ -101,9 +101,9 @@ COPY collect_TRA_TRB_in_fasta.py /
 USER root
 WORKDIR /operator
 
-RUN git clone https://github.com/tercen/TraCeR_operator
+RUN git clone https://github.com/tercen/TraCeR_summarize_operator
 
-WORKDIR /operator/TraCeR_operator
+WORKDIR /operator/TraCeR_summarize_operator
 
 RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
 
