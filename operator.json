@@ -1,6 +1,6 @@
 {
-  "name": "tracer",
-  "description": "Quantify TCR reads with TraCeR",
+  "name": "TraCeR summarise",
+  "description": "Summarise result of a previous TraCeR run",
   "tags": ["genomics", "transcriptomics", "rna-seq", "fastq", "t-cell receptor"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/TraCeR_summarize_docker_operator"],
