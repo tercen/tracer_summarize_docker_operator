@@ -1,5 +1,5 @@
 # see : https://github.com/tercen/tracer_docker_operator/tree/master/base-image
-FROM tercen/tracer_docker_operator_base:1.0.1-base
+FROM tercen/tracer_docker_operator_base:1.0.2-base
 
 COPY collect_TRA_TRB_in_fasta.py /
 
