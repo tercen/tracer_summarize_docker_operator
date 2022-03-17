@@ -42,7 +42,7 @@ if (exitCode != 0) {
 
 cmd <- paste0("python /collect_TRA_TRB_in_fasta.py ", input_path, "/*/filtered_TCR_seqs/*.fa > ", input_path, "/summarise_output.tsv")
 
-exitCode = system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
+exitCode = system(cmd)
 
 if (exitCode != 0) {
   stop("collect_TRA_TRB_in_fasta failed")
